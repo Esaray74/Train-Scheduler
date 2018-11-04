@@ -1,0 +1,105 @@
+---
+tags:
+  - Coding Notes
+Bootstrap:-------------------------------------------------------------------
+
+  LINKS:
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+Javascript/jQuery:-----------------------------------------------------------
+  
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  for Loop:
+  for (i = 0; i < cars.length; i++) { 
+    text += cars[i] + "<br>";
+  };
+
+  On click Event:
+  $( "#target" ).click(function() {
+  alert( "Handler for .click() called." );
+  });
+
+  Document.ready event:
+  $( document ).ready(function() {
+    console.log( "ready!" );
+  }); 
+
+  If statements:
+  if (condition) {
+    //event
+  }
+  else if (condition) {
+    //next event
+  }
+  else {
+    final event
+  };
+
+ajax:------------------------------------------------------------------------
+
+      $.ajax({
+      url: "https://www.omdbapi.com/?t=romancing+the+stone&y=&plot=short&apikey=trilogy",
+      method: "GET"
+    }).then(function(response) {
+      console.log(response);
+    });
+
+Firebase:--------------------------------------------------------------------
+
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+
+  <script>
+    // Initialize Firebase
+    // This is the code we copied and pasted from our app page
+    var config = {
+      apiKey: "AIzaSyCkDqgWoSXPKmnAv0SviAgVThOw26LDuF4",
+      authDomain: "penncodingbootcamptest.firebaseapp.com",
+      databaseURL: "https://penncodingbootcamptest.firebaseio.com",
+      projectId: "penncodingbootcamptest",
+      storageBucket: "penncodingbootcamptest.appspot.com",
+      messagingSenderId: "1016135716126"
+    };
+
+    firebase.initializeApp(config);
+
+    // Get a reference to the database service
+    var database = firebase.database();
+
+    // Initializing our click count at 0
+    var clickCounter = 0;
+
+    $("#click-button").on("click", function () {
+
+      // Add 1 to clickCounter
+      clickCounter++;
+
+      // **** Store Click Data to Firebase in a JSON property called clickCount *****
+      // **** Note how we are using the Firebase .set() method ****
+      // **** .ref() refers to the path you want to save your data to
+      // **** Since we left .ref() blank, it will save to the root directory
+      database.ref().set({
+        clickCount: clickCounter
+      });
+
+    database.ref().on("value" (or "child_added"), function(snapshot) {
+
+      console.log(snapshot.val());
+
+      $("#click-value").text(snapshot.val().clickCount);
+
+      clickCounter = snapshot.val().clickCount;
+
+    }, function(errorObject) {
+    //in case of error
+    console.log("The read failed: " + errorObject.code);
+    });
+
+    .orderByChild("dateAdded").limitToLast()
+
+Moment.js--------------------------------------------------------------------
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>

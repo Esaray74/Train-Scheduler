@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Train Scheduler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .card-body a {
+      word-break: break-all;
+    }
+    .articleHeadline {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron" style="background-color:white ; color: black;">
+            <h1 class="text-center">
+                <strong>
+                    <i></i> Train Schedule</strong>
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <strong>
+                            <i class="fa fa-table"></i> Schedule:</strong>
+                    </div>
+
+                    <!-- This main card will hold the train schedule -->
+                    <div class="card-body" id="train-section">
+                        <table class="table table-hover">
+                            <tr>
+                                <th scope="col">Train Name:</th>
+                                <th scope="col">Destination:</th>
+                                <th scope="col">Frequency (min):</th>
+                                <th scope="col">Next Arrival:</th>
+                                <th scope="col">Minutes Away:</th>
+                            </tr>
+                            <tbody id="table-data"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <strong>
+                            <i class="fa fa-list-alt"></i> Train Parameters</strong>
+                    </div>
+                    <div class="card-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="search">Train Name:</label>
+                                <input type="text" class="form-control" id="train-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Destination</label>
+                                <input type="text" class="form-control" id="train-destination" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="startYear">First Train Time: (military time)</label>
+                                <input type="text" class="form-control" placeholder="HH:MM" id="train-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="endYear">Frequency: (minutes)</label>
+                                <input type="text" class="form-control" id="time-freq">
+                            </div>
+
+                            <button type="submit" class="btn btn-default" id="btn-add">
+                                <i></i> Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Code to the JavaScript File -->
+    <script src="train.js"></script>
+
+</body>
+
+</html>
